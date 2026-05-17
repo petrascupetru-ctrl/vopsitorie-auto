@@ -194,11 +194,43 @@
   .footer-links a:hover { color: #00ff41; }
   .footer-bottom { border-top: 1px solid #1a1a1a; margin-top: 40px; padding-top: 20px; text-align: center; font-size: 13px; color: #333; width: 100%; }
 
+  /* FAQ */
+  .faq { padding: 90px 60px; background: #0d0d0d; text-align: center; }
+  .faq h2 { font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+  .faq .sub { color: #666; font-size: 17px; margin-bottom: 54px; }
+  .faq-list { max-width: 760px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: #111; border: 1px solid #1e1e1e; border-radius: 16px;
+    overflow: hidden; transition: border-color .25s;
+  }
+  .faq-item.open { border-color: rgba(0,255,65,0.4); box-shadow: 0 0 24px rgba(0,255,65,0.07); }
+  .faq-q {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 28px; background: none; border: none; cursor: pointer;
+    color: #fff; font-size: 16px; font-weight: 700; font-family: inherit;
+    text-align: left; gap: 16px; transition: color .2s;
+  }
+  .faq-q:hover { color: #00ff41; }
+  .faq-item.open .faq-q { color: #00ff41; }
+  .faq-icon {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid #333; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #555; transition: all .25s; line-height: 1;
+  }
+  .faq-item.open .faq-icon { border-color: #00ff41; color: #00ff41; background: rgba(0,255,65,0.1); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, padding .35s ease;
+    font-size: 15px; color: #888; line-height: 1.75;
+    padding: 0 28px;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 28px 22px; }
+
   @media (max-width: 640px) {
     nav { padding: 14px 20px; }
     .hero { padding: 70px 20px; }
     .hero h1 { font-size: 34px; }
-    .services, .contact, .testimonials, .pricing { padding: 60px 20px; }
+    .services, .contact, .testimonials, .pricing, .faq { padding: 60px 20px; }
     .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
     .price-card.featured { transform: none; }
     .price-card.featured:hover { transform: translateY(-4px); }
@@ -206,6 +238,9 @@
     .row { grid-template-columns: 1fr; }
     footer { padding: 40px 20px; }
     .btn-outline { margin-left: 0; margin-top: 12px; }
+    .faq-q { padding: 18px 20px; font-size: 15px; }
+    .faq-a { padding: 0 20px; }
+    .faq-item.open .faq-a { padding: 0 20px 18px; }
   }
 </style>
 </head>
@@ -221,6 +256,7 @@
     <a href="#servicii">Servicii</a>
     <a href="#preturi">Prețuri</a>
     <a href="#testimoniale">Recenzii</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
     <a href="tel:+40721000000">📞 0721 000 000</a>
   </div>
@@ -387,6 +423,55 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2>Întrebări frecvente</h2>
+  <p class="sub">Tot ce trebuie să știi înainte să aduci mașina la noi</p>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Cât durează o vopsire completă a mașinii?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">O vopsire completă durează în general <strong style="color:#fff">3–5 zile lucrătoare</strong>, în funcție de starea caroseriei și de pachetul ales. Pachetul Premium, care include dezmembrarea completă, poate ajunge la 7 zile. Îți comunicăm un termen exact după evaluarea inițială gratuită.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Garanția vopselei acoperă și zgârieturile apărute după lucrare?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Garanția acoperă <strong style="color:#fff">defectele de execuție</strong>: coajă, fisuri, decolorare sau exfoliere a vopselei aplicate de noi. Zgârieturile mecanice produse ulterior (accidente, chei etc.) nu sunt acoperite — ele reprezintă daune fizice externe, nu defecte de vopsire.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Ce este ceramic coating și merită investiția?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Ceramic coating-ul este un strat protector <strong style="color:#fff">nano-ceramic</strong> care se leagă chimic de vopsea și creează o suprafață hidrofobă extrem de dură. Murdăria, apa și razele UV nu mai afectează vopseaua. Durata de protecție este de <strong style="color:#fff">2–5 ani</strong>, iar mașina necesită spălări mult mai rare. Este investiția ideală dacă vrei să-ți păstrezi mașina în stare perfectă pe termen lung.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Pot schimba culoarea mașinii și ce acte sunt necesare?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Da, vopsim mașina în orice culoare dorești. Dacă <strong style="color:#fff">schimbi culoarea față de cea din carte de identitate</strong>, ești obligat să declari modificarea la RAR și să actualizezi documentele de înmatriculare. Noi îți eliberăm factura și documentele de la vopsitorie necesare pentru această procedură. Dacă revopsești în aceeași culoare, nu sunt necesare documente suplimentare.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Cum pot afla prețul exact pentru mașina mea?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Cel mai simplu este să <strong style="color:#fff">completezi formularul de mai jos</strong> sau să ne suni la 0721 000 000 — îți răspundem în maxim 2 ore cu o estimare. Pentru un preț definitiv, facem o evaluare gratuită la atelier (durează ~20 minute), unde inspectăm starea caroseriei, suprafața de vopsit și tipul de vopsea necesar.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- FORMULAR -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -443,6 +528,20 @@ function trimite(e) {
   e.preventDefault();
   alert('✅ Cererea ta a fost trimisă! Te contactăm în maxim 2 ore cu oferta.');
   e.target.reset();
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-icon').textContent = '+';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    icon.textContent = '−';
+  }
 }
 </script>
 </body>
