@@ -85,6 +85,57 @@
   .card p { font-size: 15px; color: #777; line-height: 1.7; }
   .card .pret { margin-top: 18px; font-weight: 700; color: #00ff41; font-size: 16px; }
 
+  /* PRETURI */
+  .pricing { padding: 90px 60px; background: #0a0a0a; text-align: center; }
+  .pricing h2 { font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+  .pricing .sub { color: #666; font-size: 17px; margin-bottom: 54px; }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    max-width: 1000px; margin: 0 auto; align-items: stretch;
+  }
+  .price-card {
+    background: #111; border: 1px solid #1e1e1e; border-radius: 20px;
+    padding: 40px 32px; text-align: left; display: flex; flex-direction: column;
+    transition: all .25s; position: relative;
+  }
+  .price-card:hover { border-color: rgba(0,255,65,0.4); box-shadow: 0 0 30px rgba(0,255,65,0.08); transform: translateY(-4px); }
+  .price-card.featured {
+    border-color: #00ff41; box-shadow: 0 0 40px rgba(0,255,65,0.15);
+    transform: scale(1.03);
+  }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 0 50px rgba(0,255,65,0.2); }
+  .price-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: #00ff41; color: #000; font-size: 12px; font-weight: 700;
+    padding: 5px 16px; border-radius: 20px; letter-spacing: .3px; white-space: nowrap;
+  }
+  .price-tier { font-size: 14px; font-weight: 600; color: #00ff41; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .price-card h3 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .price-desc { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.6; }
+  .price-amount { margin-bottom: 28px; }
+  .price-amount strong { font-size: 42px; font-weight: 900; color: #fff; line-height: 1; }
+  .price-amount span { font-size: 15px; color: #555; display: block; margin-top: 6px; }
+  .price-features { list-style: none; flex: 1; margin-bottom: 32px; }
+  .price-features li {
+    font-size: 14px; color: #999; padding: 10px 0;
+    border-bottom: 1px solid #1a1a1a; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+  }
+  .price-features li:last-child { border-bottom: none; }
+  .price-features li::before { content: '✓'; color: #00ff41; font-weight: 700; flex-shrink: 0; }
+  .price-features li.muted { color: #444; }
+  .price-features li.muted::before { content: '—'; color: #333; }
+  .price-btn {
+    display: block; text-align: center; padding: 14px 24px; border-radius: 50px;
+    font-size: 15px; font-weight: 700; text-decoration: none; transition: all .2s;
+    border: 2px solid #333; color: #fff;
+  }
+  .price-btn:hover { border-color: #00ff41; color: #00ff41; }
+  .price-card.featured .price-btn {
+    background: #00ff41; color: #000; border-color: #00ff41;
+    box-shadow: 0 0 24px rgba(0,255,65,0.35);
+  }
+  .price-card.featured .price-btn:hover { background: #00e639; box-shadow: 0 0 40px rgba(0,255,65,0.55); transform: translateY(-2px); }
+
   /* TESTIMONIALE */
   .testimonials { padding: 90px 60px; background: #0a0a0a; text-align: center; }
   .testimonials h2 { font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #fff; }
@@ -147,7 +198,10 @@
     nav { padding: 14px 20px; }
     .hero { padding: 70px 20px; }
     .hero h1 { font-size: 34px; }
-    .services, .contact, .testimonials { padding: 60px 20px; }
+    .services, .contact, .testimonials, .pricing { padding: 60px 20px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-4px); }
     .trust { gap: 28px; padding: 20px; }
     .row { grid-template-columns: 1fr; }
     footer { padding: 40px 20px; }
@@ -165,6 +219,7 @@
   </div>
   <div>
     <a href="#servicii">Servicii</a>
+    <a href="#preturi">Prețuri</a>
     <a href="#testimoniale">Recenzii</a>
     <a href="#contact">Contact</a>
     <a href="tel:+40721000000">📞 0721 000 000</a>
@@ -211,6 +266,76 @@
       <p>Polish profesional, ceruire, aplicare folie de protecție sau ceramic coating pentru luciu de durată.</p>
       <div class="pret">De la 800 lei</div>
     </div>
+  </div>
+</section>
+
+<!-- PRETURI -->
+<section class="pricing" id="preturi">
+  <h2>Pachete & Prețuri</h2>
+  <p class="sub">Alege pachetul potrivit — prețuri transparente, fără surprize</p>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-tier">Basic</div>
+      <h3>Reparație Locală</h3>
+      <p class="price-desc">Ideal pentru zgârieturi, lovituri sau revopsire pe un singur panou.</p>
+      <div class="price-amount">
+        <strong>400</strong> lei
+        <span>per panou · de la</span>
+      </div>
+      <ul class="price-features">
+        <li>Evaluare gratuită la atelier</li>
+        <li>Chituire și șlefuire zonă afectată</li>
+        <li>Vopsire locală, culoare identică</li>
+        <li>Lac de protecție UV</li>
+        <li>Garanție 6 luni</li>
+        <li class="muted">Vopsire completă caroserie</li>
+        <li class="muted">Ceramic coating</li>
+      </ul>
+      <a href="#contact" class="price-btn">Solicită ofertă</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-badge">Cel mai popular</div>
+      <div class="price-tier">Standard</div>
+      <h3>Vopsire Completă</h3>
+      <p class="price-desc">Soluția completă pentru o mașină ca nouă — cel mai ales pachet de clienți.</p>
+      <div class="price-amount">
+        <strong>2.500</strong> lei
+        <span>mașină medie · de la</span>
+      </div>
+      <ul class="price-features">
+        <li>Pregătire completă caroserie</li>
+        <li>Grunduire profesională</li>
+        <li>Vopsire integrală (2 straturi)</li>
+        <li>Lac transparent UV premium</li>
+        <li>Polish final inclus</li>
+        <li>Garanție 1 an</li>
+        <li class="muted">Dezmembrare completă</li>
+      </ul>
+      <a href="#contact" class="price-btn">Solicită ofertă</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">Premium</div>
+      <h3>Experiență Totală</h3>
+      <p class="price-desc">Serviciu premium cu finisaj showroom și protecție de lungă durată.</p>
+      <div class="price-amount">
+        <strong>4.500</strong> lei
+        <span>mașină medie · de la</span>
+      </div>
+      <ul class="price-features">
+        <li>Dezmembrare și remontaj complet</li>
+        <li>Pregătire caroserie + antirugină</li>
+        <li>Vopsire premium (3 straturi)</li>
+        <li>Lac ceramic-ready UV</li>
+        <li>Polish & ceramic coating 2 ani</li>
+        <li>Curățenie interior & exterior</li>
+        <li>Garanție 2 ani</li>
+      </ul>
+      <a href="#contact" class="price-btn">Solicită ofertă</a>
+    </div>
+
   </div>
 </section>
 
@@ -275,8 +400,10 @@
       <input type="text" placeholder="Marca și modelul mașinii (ex: Dacia Logan 2018) *" required>
       <select required>
         <option value="">Alege serviciul dorit</option>
-        <option>Vopsire Completă</option>
-        <option>Reparații Caroserie</option>
+        <option>Pachet Basic – Reparație Locală</option>
+        <option>Pachet Standard – Vopsire Completă</option>
+        <option>Pachet Premium – Experiență Totală</option>
+        <option>Reparații Caroserie (alt serviciu)</option>
         <option>Polish & Protecție Ceramic</option>
         <option>Nu știu încă – vreau o evaluare</option>
       </select>
@@ -297,9 +424,10 @@
   </div>
   <div class="footer-links">
     <h4>Servicii</h4>
-    <a href="#">Vopsire Completă</a>
-    <a href="#">Reparații Caroserie</a>
-    <a href="#">Polish & Ceramic</a>
+    <a href="#preturi">Pachete & Prețuri</a>
+    <a href="#servicii">Vopsire Completă</a>
+    <a href="#servicii">Reparații Caroserie</a>
+    <a href="#servicii">Polish & Ceramic</a>
   </div>
   <div class="footer-links">
     <h4>Contact</h4>
