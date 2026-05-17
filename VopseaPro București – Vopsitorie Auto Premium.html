@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VopseaPro București – Vopsitorie Auto Premium</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; color: #1a1a1a; background: #0a0a0a; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 60px; background: #0d0d0d;
+    border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 42px; height: 42px; background: #00ff41;
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 22px;
+  }
+  .logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+  .logo span { color: #00ff41; }
+  nav a { text-decoration: none; color: #aaa; margin-left: 28px; font-size: 15px; transition: color .2s; }
+  nav a:hover { color: #00ff41; }
+
+  /* HERO */
+  .hero {
+    background: #0d0d0d;
+    padding: 110px 60px 90px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,255,65,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block; background: rgba(0,255,65,0.1);
+    border: 1px solid rgba(0,255,65,0.3); color: #00ff41;
+    padding: 6px 18px; border-radius: 20px; font-size: 13px;
+    font-weight: 600; margin-bottom: 24px; letter-spacing: .5px;
+  }
+  .hero h1 { font-size: 54px; font-weight: 900; line-height: 1.15; max-width: 740px; margin: 0 auto 22px; color: #fff; }
+  .hero h1 span { color: #00ff41; }
+  .hero p { font-size: 19px; color: #888; max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+  .btn {
+    display: inline-block; background: #00ff41; color: #000;
+    padding: 16px 36px; border-radius: 50px; font-size: 17px;
+    font-weight: 700; text-decoration: none; transition: all .2s;
+    box-shadow: 0 0 24px rgba(0,255,65,0.35);
+  }
+  .btn:hover { background: #00e639; box-shadow: 0 0 40px rgba(0,255,65,0.55); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; border: 2px solid #00ff41; color: #00ff41;
+    padding: 14px 32px; border-radius: 50px; font-size: 16px;
+    font-weight: 600; text-decoration: none; margin-left: 14px; transition: all .2s;
+  }
+  .btn-outline:hover { background: #00ff41; color: #000; }
+
+  /* TRUST BAR */
+  .trust {
+    background: #111; border-top: 1px solid #1e1e1e; border-bottom: 1px solid #1e1e1e;
+    padding: 24px 60px; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
+  }
+  .trust-item { text-align: center; }
+  .trust-item strong { font-size: 28px; display: block; color: #00ff41; font-weight: 800; }
+  .trust-item span { font-size: 13px; color: #666; }
+
+  /* SERVICII */
+  .services { padding: 90px 60px; background: #0d0d0d; text-align: center; }
+  .services h2 { font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+  .services .sub { color: #666; font-size: 17px; margin-bottom: 54px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 960px; margin: 0 auto; }
+  .card {
+    background: #111; border: 1px solid #1e1e1e; border-radius: 20px;
+    padding: 36px 28px; text-align: left; transition: all .25s;
+  }
+  .card:hover { border-color: #00ff41; box-shadow: 0 0 30px rgba(0,255,65,0.1); transform: translateY(-4px); }
+  .icon { font-size: 40px; margin-bottom: 18px; }
+  .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #fff; }
+  .card p { font-size: 15px; color: #777; line-height: 1.7; }
+  .card .pret { margin-top: 18px; font-weight: 700; color: #00ff41; font-size: 16px; }
+
+  /* TESTIMONIALE */
+  .testimonials { padding: 90px 60px; background: #0a0a0a; text-align: center; }
+  .testimonials h2 { font-size: 38px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+  .testimonials .sub { color: #666; font-size: 17px; margin-bottom: 54px; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; max-width: 960px; margin: 0 auto; }
+  .testi-card {
+    background: #111; border: 1px solid #1e1e1e; border-radius: 20px;
+    padding: 32px 28px; text-align: left; position: relative; transition: all .25s;
+  }
+  .testi-card:hover { border-color: rgba(0,255,65,0.3); }
+  .stars { color: #00ff41; font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-text { font-size: 15px; color: #999; line-height: 1.75; font-style: italic; margin-bottom: 22px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(0,255,65,0.15); border: 2px solid rgba(0,255,65,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: #00ff41;
+  }
+  .author-info strong { display: block; font-size: 14px; font-weight: 700; color: #fff; }
+  .author-info span { font-size: 12px; color: #555; }
+  .quote-mark {
+    position: absolute; top: 20px; right: 24px;
+    font-size: 48px; color: rgba(0,255,65,0.08); font-family: Georgia, serif; line-height: 1;
+  }
+
+  /* FORMULAR */
+  .contact { padding: 90px 60px; background: #0d0d0d; }
+  .contact-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+  .contact h2 { font-size: 38px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+  .contact p { color: #666; font-size: 16px; margin-bottom: 40px; }
+  form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  input, textarea, select {
+    width: 100%; padding: 14px 18px;
+    border: 1px solid #222; border-radius: 12px;
+    font-size: 15px; font-family: inherit;
+    background: #111; color: #fff; outline: none; transition: border-color .2s;
+  }
+  input::placeholder, textarea::placeholder { color: #555; }
+  input:focus, textarea:focus, select:focus { border-color: #00ff41; box-shadow: 0 0 0 3px rgba(0,255,65,0.08); }
+  select option { background: #111; }
+  textarea { resize: vertical; min-height: 120px; }
+  form .btn { border: none; cursor: pointer; width: 100%; text-align: center; font-size: 17px; padding: 18px; }
+
+  /* FOOTER */
+  footer {
+    background: #080808; border-top: 1px solid #1a1a1a;
+    padding: 50px 60px; display: flex;
+    justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px;
+  }
+  .footer-brand .logo { color: #fff; font-size: 20px; }
+  .footer-brand p { margin-top: 10px; font-size: 14px; line-height: 1.7; color: #555; max-width: 260px; }
+  .footer-links h4 { color: #fff; margin-bottom: 14px; font-size: 15px; }
+  .footer-links a { display: block; color: #555; text-decoration: none; font-size: 14px; margin-bottom: 8px; transition: color .2s; }
+  .footer-links a:hover { color: #00ff41; }
+  .footer-bottom { border-top: 1px solid #1a1a1a; margin-top: 40px; padding-top: 20px; text-align: center; font-size: 13px; color: #333; width: 100%; }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 70px 20px; }
+    .hero h1 { font-size: 34px; }
+    .services, .contact, .testimonials { padding: 60px 20px; }
+    .trust { gap: 28px; padding: 20px; }
+    .row { grid-template-columns: 1fr; }
+    footer { padding: 40px 20px; }
+    .btn-outline { margin-left: 0; margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">🚗</div>
+    <div class="logo">Vopsea<span>Pro</span></div>
+  </div>
+  <div>
+    <a href="#servicii">Servicii</a>
+    <a href="#testimoniale">Recenzii</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+40721000000">📞 0721 000 000</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">⚡ Vopsitorie Premium București</div>
+  <h1>Mașina ta, <span>perfectă</span> din nou</h1>
+  <p>Vopsitorie auto profesională în București. Rezultate impecabile, garanție 2 ani, prețuri corecte.</p>
+  <a href="#contact" class="btn">Solicită ofertă gratuită →</a>
+  <a href="#servicii" class="btn-outline">Vezi serviciile</a>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item"><strong>1200+</strong><span>Mașini vopsite</span></div>
+  <div class="trust-item"><strong>8 ani</strong><span>Experiență</span></div>
+  <div class="trust-item"><strong>2 ani</strong><span>Garanție vopsea</span></div>
+  <div class="trust-item"><strong>4.9 ⭐</strong><span>Rating Google</span></div>
+</div>
+
+<!-- SERVICII -->
+<section class="services" id="servicii">
+  <h2>Serviciile noastre</h2>
+  <p class="sub">De la zgârieturi minore la vopsire completă — facem totul</p>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Vopsire Completă</h3>
+      <p>Vopsire integrală a caroseriei în orice culoare. Pregătire, chituire, grunduire și lac de protecție UV incluse.</p>
+      <div class="pret">De la 2.500 lei</div>
+    </div>
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>Reparații Caroserie</h3>
+      <p>Îndreptare bavuri, eliminare zgârieturi adânci, reparare lovituri. Culoare identică cu originalul.</p>
+      <div class="pret">De la 400 lei / panou</div>
+    </div>
+    <div class="card">
+      <div class="icon">✨</div>
+      <h3>Polish & Protecție</h3>
+      <p>Polish profesional, ceruire, aplicare folie de protecție sau ceramic coating pentru luciu de durată.</p>
+      <div class="pret">De la 800 lei</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALE -->
+<section class="testimonials" id="testimoniale">
+  <h2>Ce spun clienții</h2>
+  <p class="sub">Peste 1200 de șoferi mulțumiți în București și Ilfov</p>
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Am adus BMW-ul cu o lovitură serioasă în ușa din față. L-am luat după 3 zile și părea nou-nouț. Nu se vede absolut nimic, culoarea e identică. Recomand cu toată încrederea!</p>
+      <div class="testi-author">
+        <div class="avatar">AM</div>
+        <div class="author-info">
+          <strong>Alexandru M.</strong>
+          <span>BMW Seria 5 · București</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Prețuri corecte și muncă de calitate. Am vopsit complet Dacia Logan și arată ca o mașină nouă. Garanția de 2 ani m-a convins. Nu m-am mai dus în altă parte de atunci.</p>
+      <div class="testi-author">
+        <div class="avatar">IC</div>
+        <div class="author-info">
+          <strong>Ioana C.</strong>
+          <span>Dacia Logan · Sector 3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Am aplicat ceramic coating pe Audi-ul meu. Rezultatul e incredibil — apa și murdăria alunecă efectiv pe caroserie. Profesionalism desăvârșit, revin cu plăcere.</p>
+      <div class="testi-author">
+        <div class="avatar">RP</div>
+        <div class="author-info">
+          <strong>Radu P.</strong>
+          <span>Audi A4 · Ilfov</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORMULAR -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Solicită o ofertă gratuită</h2>
+    <p>Completează formularul și te contactăm în maxim 2 ore cu prețul exact pentru mașina ta.</p>
+    <form onsubmit="trimite(event)">
+      <div class="row">
+        <input type="text" placeholder="Numele tău *" required>
+        <input type="tel" placeholder="Telefon *" required>
+      </div>
+      <input type="text" placeholder="Marca și modelul mașinii (ex: Dacia Logan 2018) *" required>
+      <select required>
+        <option value="">Alege serviciul dorit</option>
+        <option>Vopsire Completă</option>
+        <option>Reparații Caroserie</option>
+        <option>Polish & Protecție Ceramic</option>
+        <option>Nu știu încă – vreau o evaluare</option>
+      </select>
+      <textarea placeholder="Descrie problema sau ce dorești (opțional)..."></textarea>
+      <button type="submit" class="btn">Trimite cererea →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo-wrap" style="margin-bottom:10px">
+      <div class="logo-icon" style="width:34px;height:34px;font-size:18px">🚗</div>
+      <div class="logo" style="font-size:18px">Vopsea<span>Pro</span></div>
+    </div>
+    <p>Vopsitorie auto profesională în București și Ilfov. Calitate garantată 2 ani.</p>
+  </div>
+  <div class="footer-links">
+    <h4>Servicii</h4>
+    <a href="#">Vopsire Completă</a>
+    <a href="#">Reparații Caroserie</a>
+    <a href="#">Polish & Ceramic</a>
+  </div>
+  <div class="footer-links">
+    <h4>Contact</h4>
+    <a href="tel:+40721000000">📞 0721 000 000</a>
+    <a href="mailto:contact@vopseapro.ro">✉️ contact@vopseapro.ro</a>
+    <a href="#">📍 București, Sector 2</a>
+  </div>
+  <div class="footer-bottom">© 2025 VopseaPro. Toate drepturile rezervate.</div>
+</footer>
+
+<script>
+function trimite(e) {
+  e.preventDefault();
+  alert('✅ Cererea ta a fost trimisă! Te contactăm în maxim 2 ore cu oferta.');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
